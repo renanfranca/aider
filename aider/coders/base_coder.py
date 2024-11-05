@@ -143,6 +143,7 @@ class Coder:
                 aider_commit_hashes=from_coder.aider_commit_hashes,
                 commands=from_coder.commands.clone(),
                 total_cost=from_coder.total_cost,
+                ask_prompts=from_coder.ask_prompts,  # Add this line
             )
 
             use_kwargs.update(update)  # override to complete the switch
@@ -267,6 +268,7 @@ class Coder:
         num_cache_warming_pings=0,
         suggest_shell_commands=True,
         chat_language=None,
+        ask_prompts=None,  # Add this line
     ):
         # Fill in a dummy Analytics if needed, but it is never .enable()'d
         self.analytics = analytics if analytics is not None else Analytics()
@@ -278,6 +280,7 @@ class Coder:
         self.rejected_urls = set()
         self.abs_root_path_cache = {}
         self.ignore_mentions = set()
+        self.ask_prompts = ask_prompts  # Add this line
 
         self.suggest_shell_commands = suggest_shell_commands
 
